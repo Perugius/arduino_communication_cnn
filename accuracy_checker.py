@@ -23,17 +23,6 @@ def read_array(ser, num_bytes):
     return np.frombuffer(data, dtype=np.float32)
 
 
-def send_array(ser, array):
-    data = array.tobytes()
-    # send data in chunks of 64 bytes
-    for i in range(0, len(data), 64):
-        chunk = data[i:i+64]
-        ser.write(chunk)
-        #print(ser.in_waiting)
-        time.sleep(0.01)
-        print("writing")
-
-
 def send_array_elementwise(ser, array):
     ctr = 0
     for fl in array:
