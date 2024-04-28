@@ -3,7 +3,7 @@ import serial
 import time
 import struct
 
-port = "COM5"
+port = "COM7"
 baud_rate = 115200
 
 
@@ -34,16 +34,20 @@ def send_array_elementwise(ser, array):
 
 
 def main():
-    x_data = np.load("dfki_data/x_test.npy")#[63].flatten()
-    num_of_inputs = x_data.shape[0]
+    file_path = 'ecg_data/numpy_inputs/'
+    #x_data = np.load("ecg_data/numpy_inputs/input_0.npy")
+    #x_data = np.load("dfki_data/x_test.npy")#[63].flatten()
+    #num_of_inputs = x_data.shape[0]
     #y_data = np.load("dfki_data/y_test.npy")[40]
 
     result_array = []
     ser = connect_arduino(port, baud_rate)
 
-    for i in range(num_of_inputs):
+    for i in range(10):
+        filename = 'input_'+str(i+70)+'.npy'
+        x_data = np.load(file_path+filename)
         # iterate over the x_test inputs to send one each i
-        current_input = x_data[i].flatten()
+        current_input = x_data.flatten()
         print(current_input)
         while True:
             if ser.in_waiting > 0:
@@ -70,7 +74,7 @@ def main():
                     ser.write("ACK\n".encode())
                     time.sleep(0.05)
 
-    np.save('dfki_model_v4_result_array.npy', result_array)
+    np.save('PICO_ecg_model_result_array_70-79.npy', result_array)
     print(result_array)
     time.sleep(1000)
 
