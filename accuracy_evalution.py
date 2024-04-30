@@ -1,6 +1,6 @@
 import numpy as np
 
-results = np.load("dfki_model_v4_result_array.npy")
+results = np.load("dfki_model_v4_result_array_ARDUINO.npy")
 ground_truth = np.load("dfki_data/y_test.npy")
 num_of_correct_predictions = 0
 i = 0
