@@ -45,7 +45,7 @@ def main():
     ser = connect_arduino(port, baud_rate)
 
     for i in range(10):
-        filename = 'input_'+str(i+70)+'.npy'
+        filename = 'input_'+str(i)+'.npy'
         x_data = np.load(file_path+filename)
         # iterate over the x_test inputs to send one each i
         current_input = x_data.flatten()
@@ -75,7 +75,7 @@ def main():
                     ser.write("ACK\n".encode())
                     time.sleep(0.05)
 
-    np.save('ecg_data/pico_result_data/pico_ecg_model_result_array_70-79.npy', result_array)
+    np.save('ecg_data/pico_result_data/pico_ecg_model_inference_time_00-09.npy', result_array)
     print(result_array)
     time.sleep(1000)
 
