@@ -7,7 +7,7 @@ ground_truths = []
 complete_result = []
 threshold = 0.5
 
-testing = np.load("ecg_data/complete_results_raspi.npy")
+testing = np.load("final_results/complete_results_raspi.npy")
 
 # format results in case they are split into multiple files
 # for i in range(10):
