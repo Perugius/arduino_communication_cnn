@@ -7,8 +7,10 @@ ground_truths = []
 complete_result = []
 threshold = 0.5
 
-testing = np.load("final_results/complete_results_raspi.npy")
-
+testing = np.load("final_results/complete_results_raspi_tflite.npy")
+print(testing)
+#testing2 = np.load("final_results/raspi_ecg_model_inference_time.npy")
+#print(testing2)
 # format results in case they are split into multiple files
 # for i in range(10):
 #     arr = np.load(result_path + f'pico_ecg_model_result_array_{i}0-{i}9.npy')[:, 0]
