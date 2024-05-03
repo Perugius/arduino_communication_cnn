@@ -4,7 +4,7 @@ import time
 import struct
 
 # com port depends on device, Arduno Nano = COM5, Pico W = COM7
-port = "COM7"
+port = "COM5"
 baud_rate = 115200
 
 
@@ -75,7 +75,7 @@ def main():
                     ser.write("ACK\n".encode())
                     time.sleep(0.05)
 
-    np.save('ecg_data/pico_result_data/pico_ecg_model_inference_time_00-09.npy', result_array)
+    np.save('ecg_data/arduino_result_data/ecg_model_inference_time_00-09.npy', result_array)
     print(result_array)
     time.sleep(1000)
 
